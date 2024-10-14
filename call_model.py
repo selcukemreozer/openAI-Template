@@ -8,27 +8,18 @@ from model_config import Model_Config
 warnings.filterwarnings("ignore")
 
 df = pd.read_excel(Model_Config.FILE_1_NAME_XLSX)
-df = df.drop(columns=['q_no'])
+df = df.drop(columns=['columns will be dropped'])
 ## variables ##
 theMODEL = Model_Config.MODEL_NAME
 ## variables ##
 
-def parameters(lineIndex: int)->str:
-    ## variables in function ##
-    question_col_index = list(df.columns).index('question')
-    questions = df.iloc[:,question_col_index:]
+## functions ##
+def fun1():
+    return 0
 
-    demographic_col_index = list(df.columns).index('city')
-    demographics = df.iloc[:,:demographic_col_index]
-    ## variables in function ##
-    
-    questionANDanswers = questions.iloc[lineIndex]
-    demog = demographics.iloc[lineIndex]
-    
-    text_qa=  '\n-'.join(questionANDanswers)
-    text_demographics = ' '.join(demog)
-    
-    return text_demographics, text_qa
+def fun2():
+    return 0
+## functions ##
 
 # call the model
 def call_gpt(prompt:str): # inCODE 1.05
