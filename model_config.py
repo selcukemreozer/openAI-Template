@@ -15,9 +15,9 @@ The class contains the following attributes:
         - prompt_text: The generated prompt for the model. It is a dynamic text that contains the parameters 
         - returns: The generated prompt for the model.
 """
-
+import pandas as pd
 class Model_Config:
-    FILE_1_NAME_XLSX = '72seg10qu_last_version.xlsx'
+    FILE_1_NAME_XLSX = 'test_data.csv'
     MODEL_NAME = 'gpt-4o-mini'
     SYSTEM_PROMPT = """
         """
@@ -34,7 +34,15 @@ class Model_Config:
         self.EXAMPLE_1_RESPONSE = Model_Config.EXAMPLE_1_RESPONSE
         self.EXAMPLE_2_RESPONSE = Model_Config.EXAMPLE_2_RESPONSE
         self.EXAMPLE_3_RESPONSE = Model_Config.EXAMPLE_3_RESPONSE
-        
+    @staticmethod
+    def read_file(file_name:str)->pd.DataFrame:
+        if file_name.endswith('.xlsx'):
+            df = pd.read_excel(file_name)
+        elif file_name.endswith('.csv'):
+            df = pd.read_csv(file_name)
+        elif file_name.endswith('.json'):
+            df = pd.read_json(file_name)
+        return df
     @staticmethod
     def generate_prompt(parameter_list:list)->str: # inCODE 1.04
         parameters = ' '.join(parameter_list)

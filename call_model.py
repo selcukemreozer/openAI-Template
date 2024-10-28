@@ -8,7 +8,7 @@ from model_config import Model_Config
 warnings.filterwarnings("ignore")
 
 ## data ##
-df = pd.read_excel(Model_Config.FILE_1_NAME_XLSX)
+df = Model_Config.read_file(Model_Config.FILE_1_NAME_XLSX)
 df = df.drop(columns=['column names will be dropped'])
 ## data ##
 

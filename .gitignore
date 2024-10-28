@@ -1,2 +1,6 @@
 
 personal_parameters.py
+simple_generator.py
+/__pycache__
+/testdata
+config_test.py
